@@ -1,0 +1,156 @@
+Number of Input-Splits: 3
+Number of Reducers: 4
+Mapper 0 Input
+"cat bat" mat-pat mum.edu sat. fat 'rat eat cat' mum_cs mat 
+Mapper 1 Input
+bat-hat mat pat "oat hat rat mum_cs eat oat-pat 
+Mapper 2 Input
+zat lat-cat pat jat. hat rat. kat sat wat 
+
+
+Mapper 0 output
+< cat, 1 >
+< bat, 1 >
+< mat, 1 >
+< pat, 1 >
+< sat, 1 >
+< fat, 1 >
+< rat, 1 >
+< eat, 1 >
+< cat, 1 >
+< mat, 1 >
+Mapper 1 output
+< bat, 1 >
+< hat, 1 >
+< mat, 1 >
+< pat, 1 >
+< oat, 1 >
+< hat, 1 >
+< rat, 1 >
+< eat, 1 >
+< oat, 1 >
+< pat, 1 >
+Mapper 2 output
+< zat, 1 >
+< lat, 1 >
+< cat, 1 >
+< pat, 1 >
+< jat, 1 >
+< hat, 1 >
+< rat, 1 >
+< kat, 1 >
+< sat, 1 >
+< wat, 1 >
+
+Pairs send from Mapper 0 Reducer 0
+< mat, 1 >
+< eat, 1 >
+< mat, 1 >
+Pairs send from Mapper 0 Reducer 1
+< bat, 1 >
+< fat, 1 >
+< rat, 1 >
+Pairs send from Mapper 0 Reducer 2
+< cat, 1 >
+< sat, 1 >
+< cat, 1 >
+Pairs send from Mapper 0 Reducer 3
+< pat, 1 >
+Pairs send from Mapper 1 Reducer 0
+< mat, 1 >
+< eat, 1 >
+Pairs send from Mapper 1 Reducer 1
+< bat, 1 >
+< rat, 1 >
+Pairs send from Mapper 1 Reducer 2
+< oat, 1 >
+< oat, 1 >
+Pairs send from Mapper 1 Reducer 3
+< hat, 1 >
+< pat, 1 >
+< hat, 1 >
+< pat, 1 >
+Pairs send from Mapper 2 Reducer 0
+Pairs send from Mapper 2 Reducer 1
+< zat, 1 >
+< jat, 1 >
+< rat, 1 >
+Pairs send from Mapper 2 Reducer 2
+< cat, 1 >
+< kat, 1 >
+< sat, 1 >
+< wat, 1 >
+Pairs send from Mapper 2 Reducer 3
+< lat, 1 >
+< pat, 1 >
+< hat, 1 >
+
+Reducer 0 Input
+< mat, [1, 1, 1] >
+< eat, [1, 1] >
+< mat, [1] >
+< mat, [1] >
+< eat, [1] >
+Reducer 1 Input
+< bat, [1, 1] >
+< fat, [1] >
+< rat, [1, 1, 1] >
+< bat, [1] >
+< rat, [1] >
+< zat, [1] >
+< jat, [1] >
+< rat, [1] >
+Reducer 2 Input
+< cat, [1, 1, 1] >
+< sat, [1, 1] >
+< cat, [1] >
+< oat, [1, 1] >
+< oat, [1] >
+< cat, [1] >
+< kat, [1] >
+< sat, [1] >
+< wat, [1] >
+Reducer 3 Input
+< pat, [1, 1, 1, 1] >
+< hat, [1, 1, 1] >
+< pat, [1] >
+< hat, [1] >
+< pat, [1] >
+< lat, [1] >
+< pat, [1] >
+< hat, [1] >
+
+Reducer 0 Input
+< mat, 3 >
+< eat, 2 >
+< mat, 1 >
+< mat, 1 >
+< eat, 1 >
+Reducer 1 Input
+< bat, 2 >
+< fat, 1 >
+< rat, 3 >
+< bat, 1 >
+< rat, 1 >
+< zat, 1 >
+< jat, 1 >
+< rat, 1 >
+Reducer 2 Input
+< cat, 3 >
+< sat, 2 >
+< cat, 1 >
+< oat, 2 >
+< oat, 1 >
+< cat, 1 >
+< kat, 1 >
+< sat, 1 >
+< wat, 1 >
+Reducer 3 Input
+< pat, 4 >
+< hat, 3 >
+< pat, 1 >
+< hat, 1 >
+< pat, 1 >
+< lat, 1 >
+< pat, 1 >
+< hat, 1 >
