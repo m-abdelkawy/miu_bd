@@ -86,7 +86,7 @@ public class Program {
 		//05. reducers outputs
 		StringBuilder sbReducersOutputs = new StringBuilder();
 		for (int i = 0; i < wordCount.getReducerArr().length; i++) {
-			sbReducersOutputs.append("\nReducer " + i +" Input");
+			sbReducersOutputs.append("\nReducer " + i +" Output");
 			for (int j = 0; j < wordCount.getReducerArr()[i].getLstReducerOutput().size(); j++) {
 				sbReducersOutputs.append("\n" + wordCount.getReducerArr()[i].getLstReducerOutput().get(j));
 			}

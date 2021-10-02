@@ -120,13 +120,13 @@ Reducer 3 Input
 < pat, [1] >
 < hat, [1] >
 
-Reducer 0 Input
+Reducer 0 Output
 < mat, 3 >
 < eat, 2 >
 < mat, 1 >
 < mat, 1 >
 < eat, 1 >
-Reducer 1 Input
+Reducer 1 Output
 < bat, 2 >
 < fat, 1 >
 < rat, 3 >
@@ -135,7 +135,7 @@ Reducer 1 Input
 < zat, 1 >
 < jat, 1 >
 < rat, 1 >
-Reducer 2 Input
+Reducer 2 Output
 < cat, 3 >
 < sat, 2 >
 < cat, 1 >
@@ -145,7 +145,7 @@ Reducer 2 Input
 < kat, 1 >
 < sat, 1 >
 < wat, 1 >
-Reducer 3 Input
+Reducer 3 Output
 < pat, 4 >
 < hat, 3 >
 < pat, 1 >
