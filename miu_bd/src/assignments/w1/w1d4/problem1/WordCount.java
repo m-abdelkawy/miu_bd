@@ -1,4 +1,4 @@
-package assignments.w1.d2.partB;
+package assignments.w1.w1d4.problem1;
 
 import java.util.ArrayList;
 import java.util.Collections;

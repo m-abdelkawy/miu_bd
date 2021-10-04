@@ -1,4 +1,4 @@
-package assignments.w1.d2.partB;
+package assignments.w1.w1d4.problem1;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +14,8 @@ public class Program {
 	/**
 	 * The file simulates an input-split with one word in each record
 	 */
-	static final String INPUT_DIR = "src\\assignments\\w1\\d2\\partB\\inputfiles";
-	static final String OUTPUT_PATH = "src\\assignments\\w1\\d2\\partB\\outputfiles\\outputDisplayFile.txt";
+	static final String INPUT_DIR = "src\\assignments\\w1\\w1d4\\problem1\\inputfiles";
+	static final String OUTPUT_PATH = "src\\assignments\\w1\\w1d4\\problem1\\outputfiles\\inMapperTestDataOutput.txt";
 
 	public static void main(String[] args) throws IOException {
 

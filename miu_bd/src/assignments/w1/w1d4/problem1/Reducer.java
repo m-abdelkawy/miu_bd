@@ -1,4 +1,4 @@
-package assignments.w1.d2.partB;
+package assignments.w1.w1d4.problem1;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +50,7 @@ public class Reducer {
 			boolean exists = false;
 			for (Pair<String, List<Integer>> gp : lstGroupByPair) {
 				if (gp.getKey().equalsIgnoreCase(p.getKey())) {
-					gp.getValue().add(1);
+					gp.getValue().add(p.getValue());
 					exists = true;
 					break;
 				}
@@ -58,7 +58,7 @@ public class Reducer {
 			if (!exists)
 				lstGroupByPair.add(new Pair<String, List<Integer>>(p.getKey(), new ArrayList<Integer>() {
 					{
-						add(1);
+						add(p.getValue());
 					}
 				}));
 		});

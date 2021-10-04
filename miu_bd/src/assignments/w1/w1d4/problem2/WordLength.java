@@ -1,17 +1,19 @@
-package assignments.w1.d2.partB;
+package assignments.w1.w1d4.problem2;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-class WordCount {
+class WordLength {
 	private InputSplit[] inputSplitArr;
 	private Mapper[] mapperArr;
 	private Reducer[] reducerArr;
 
 	private StringBuilder shufflingLog;
 
-	public WordCount(int numInputSplit, int numReducer, String[] inputArr) {
+	public WordLength(int numInputSplit, int numReducer, String[] inputArr) {
 		this.inputSplitArr = new InputSplit[numInputSplit];
 		this.mapperArr = new Mapper[numInputSplit];
 		this.reducerArr = new Reducer[numReducer];
@@ -86,36 +88,33 @@ class WordCount {
 			reducerArr[i] = new Reducer();
 		}
 
-		List<ArrayList<Pair<String, Integer>>> shuffledList = shuffleSort();
+		List<TreeMap<String, List<Pair<Integer, Integer>>>> shuffledList = shuffleSort();
 
 		// prepare reduce method input (i.e. lstGroupByPair in the reducer class)
 		int reducerindex = 0;
-		for (ArrayList<Pair<String, Integer>> lstPair : shuffledList) {
+
+		for (TreeMap<String, List<Pair<Integer, Integer>>> lstPair : shuffledList) {
 			reducerArr[reducerindex++].groupPairs(lstPair);
 		}
 
 		// reduce (prepare lstReducerOutput i.e. Pair<key, count>)
 		for (int i = 0; i < reducerArr.length; i++) {
-			for (int j = 0; j < reducerArr[i].getLstGroupByPair().size(); j++) {
-				Pair<String, List<Integer>> groupByPair = reducerArr[i].getLstGroupByPair().get(j);
-				reducerArr[i].reduce(groupByPair.getKey(), groupByPair.getValue());
+
+			for (Map.Entry<String, List<Pair<Integer, Integer>>> entry : reducerArr[i].getLstGroupByPair().entrySet()) {
+				reducerArr[i].reduce(entry.getKey(), entry.getValue());
 			}
 		}
 	}
 
-	private List<ArrayList<Pair<String, Integer>>> shuffleSort() {
+	private List<TreeMap<String, List<Pair<Integer, Integer>>>> shuffleSort() {
 		shufflingLog = new StringBuilder();
 
-		// sorting Mappers' output
-		//for the shuffling log to be sorted
-		for (int i = 0; i < mapperArr.length; i++) {
-			sortLstPair(mapperArr[i].getLstPair());
-		}
-
 		// 01. shuffling
-		ArrayList<ArrayList<Pair<String, Integer>>> shuffledList = new ArrayList<ArrayList<Pair<String, Integer>>>();
+		// TreeMap<Integer, TreeMap<String, Pair<Integer, Integer>>> shuffledList = new
+		// TreeMap<Integer, TreeMap<String, Pair<Integer, Integer>>>();
+		List<TreeMap<String, List<Pair<Integer, Integer>>>> shuffledList = new ArrayList<TreeMap<String, List<Pair<Integer, Integer>>>>();
 		for (int i = 0; i < reducerArr.length; i++) {
-			shuffledList.add(new ArrayList<Pair<String, Integer>>());
+			shuffledList.add(new TreeMap<String, List<Pair<Integer, Integer>>>());
 		}
 
 		/*
@@ -127,25 +126,31 @@ class WordCount {
 
 		// modification for the above for displaying purpose(there are computation
 		// overlaps in this code - revise later)
+
 		for (int i = 0; i < mapperArr.length; i++) {
 			for (int k = 0; k < reducerArr.length; k++) {
+
 				shufflingLog.append(System.getProperty("line.separator")
 						+ String.format("Pairs send from Mapper %d Reducer %d", i, k));
+
 				Mapper mapper = mapperArr[i];
-				for (int j = 0; j < mapper.getLstPair().size(); j++) {
-					int reducerIndex = this.getPartition(mapper.getLstPair().get(j).getKey());
+
+				for (Map.Entry<String, Pair<Integer, Integer>> entry : mapper.getMap().entrySet()) {
+					int reducerIndex = this.getPartition(entry.getKey());
 					if (reducerIndex == k) {
-						shuffledList.get(reducerIndex).add(mapper.getLstPair().get(j));
-						shufflingLog.append(System.getProperty("line.separator") + String.format("< %s, %s >",
-								mapper.getLstPair().get(j).getKey(), mapper.getLstPair().get(j).getValue()));
+						// if it does not contain the key - add it
+						// if not accumulate
+						if (!shuffledList.get(reducerIndex).containsKey(entry.getKey())) {
+							shuffledList.get(reducerIndex).put(entry.getKey(), new ArrayList<Pair<Integer, Integer>>());
+						}
+						shuffledList.get(reducerIndex).get(entry.getKey()).add(
+								new Pair<Integer, Integer>(entry.getValue().getKey(), entry.getValue().getValue()));
+
+						shufflingLog.append(System.getProperty("line.separator")
+								+ String.format("< %s, %s >", entry.getKey(), entry.getValue()));
 					}
 				}
 			}
-		}
-		
-		// 02. sorting the reducer input
-		for (int i = 0; i < shuffledList.size(); i++) {
-			sortLstPair(shuffledList.get(i));
 		}
 
 		return shuffledList;

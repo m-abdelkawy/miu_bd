@@ -1,4 +1,4 @@
-package assignments.w1.d2.partB;
+package assignments.w1.w1d4.problem2;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,20 +7,22 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Program {
 
 	/**
 	 * The file simulates an input-split with one word in each record
 	 */
-	static final String INPUT_DIR = "src\\assignments\\w1\\d2\\partB\\inputfiles";
-	static final String OUTPUT_PATH = "src\\assignments\\w1\\d2\\partB\\outputfiles\\outputDisplayFile.txt";
+	static final String INPUT_DIR = "src\\assignments\\w1\\w1d4\\problem2\\inputfiles";
+	static final String OUTPUT_PATH = "src\\assignments\\w1\\w1d4\\problem2\\outputfiles\\outputFileprob2.txt";
 
 	public static void main(String[] args) throws IOException {
 
 		int numInputSplit = 0;
-		int numReducer = 4;
+		int numReducer = 3;
 
 		String[] inputFilePaths;
 		File f = new File(INPUT_DIR);
@@ -47,7 +49,7 @@ public class Program {
 			inputArr[i] = sbInput.toString();
 		}
 
-		WordCount wordCount = new WordCount(numInputSplit, numReducer, inputArr);
+		WordLength wordCount = new WordLength(numInputSplit, numReducer, inputArr);
 
 		// Write to the file
 		FastWriter writer = new FastWriter(OUTPUT_PATH, true);
@@ -66,8 +68,9 @@ public class Program {
 		StringBuilder sbMappersOutput = new StringBuilder();
 		for (int i = 0; i < wordCount.getMapperArr().length; i++) {
 			sbMappersOutput.append("\nMapper " + i + " Output:--");
-			for (int j = 0; j < wordCount.getMapperArr()[i].getLstPair().size(); j++) {
-				sbMappersOutput.append("\n" + wordCount.getMapperArr()[i].getLstPair().get(j));
+
+			for (Map.Entry<String, Pair<Integer, Integer>> entry : wordCount.getMapperArr()[i].getMap().entrySet()) {
+				sbMappersOutput.append("\n" + "< " + entry.getKey() + ", " + entry.getValue() + " >");
 			}
 		}
 		writer.appendNewLine(sbMappersOutput.toString());
@@ -79,8 +82,11 @@ public class Program {
 		StringBuilder sbReducersInputs = new StringBuilder();
 		for (int i = 0; i < wordCount.getReducerArr().length; i++) {
 			sbReducersInputs.append("\nReducer " + i + " Input:--");
-			for (int j = 0; j < wordCount.getReducerArr()[i].getLstGroupByPair().size(); j++) {
-				sbReducersInputs.append("\n" + wordCount.getReducerArr()[i].getLstGroupByPair().get(j));
+
+			for (Map.Entry<String, List<Pair<Integer, Integer>>> entry : wordCount.getReducerArr()[i]
+					.getLstGroupByPair().entrySet()) {
+				sbReducersInputs.append(
+						"\n" + "< " + entry.getKey() + ", " + Arrays.toString(entry.getValue().toArray()) + " >");
 			}
 		}
 		writer.appendNewLine(sbReducersInputs.toString());
@@ -90,7 +96,7 @@ public class Program {
 		for (int i = 0; i < wordCount.getReducerArr().length; i++) {
 			sbReducersOutputs.append("\nReducer " + i + " Output:--");
 			for (int j = 0; j < wordCount.getReducerArr()[i].getLstReducerOutput().size(); j++) {
-				sbReducersOutputs.append("\n" + wordCount.getReducerArr()[i].getLstReducerOutput().get(j));
+				sbReducersOutputs.append("\n" + "< " + wordCount.getReducerArr()[i].getLstReducerOutput().get(j) +" >");
 			}
 		}
 		writer.appendNewLine(sbReducersOutputs.toString());
