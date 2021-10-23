@@ -1,0 +1,42 @@
+//Commands for part 4
+//Stripe Alg
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data1000.txt /outputStripe1000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data2000.txt /outputStripe2000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data3000.txt /outputStripe3000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data4000.txt /outputStripe4000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data5000.txt /outputStripe5000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data6000.txt /outputStripe6000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data7000.txt /outputStripe7000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data8000.txt /outputStripe8000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data8000.txt /outputStripe9000
+
+hadoop jar /home/cloudera/StripeAlg.jar StripeRelativeFrequency /inputfolderStripeAlg/data10000.txt /outputStripe10000
+
+//Pair Alg
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data1000.txt /outputPair1000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data2000.txt /outputPair2000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data3000.txt /outputPair3000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data4000.txt /outputPair4000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data5000.txt /outputPair5000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data6000.txt /outputPair6000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data7000.txt /outputPair7000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data8000.txt /outputPair8000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data9000.txt /outputPair9000
+
+hadoop jar /home/cloudera/PairAlg.jar PairRelativeFrequency /inputfolderStripeAlg/data10000.txt /outputPair10000
